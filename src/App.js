@@ -48,6 +48,7 @@ class App extends Component {
             <SearchBar
               books={books}
               searchForBooks={this.searchForBooks}
+              searchBooks={searchBooks}
               />
       
         )}
