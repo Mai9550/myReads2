@@ -85,6 +85,13 @@ class BookList extends Component {
 }
 }
 class SearchBar extends Component {
+  state = {
+    value: '',
+  };
+  handleChange = event => {
+    const val = event.target.value;
+    this.setState({ value: val })
+  };
   render() {
     const {books,searchForBooks,searchBooks}=this.props;
     
@@ -94,7 +101,7 @@ class SearchBar extends Component {
               <button className="close-search" >Close</button>
               <div className="search-books-input-wrapper">
                 
-                <input type="text" placeholder="Search by title or author" value={searchBooks} onChange={(event)=>searchForBooks(event.target.value)}/>
+                <input type="text" placeholder="Search by title or author" value={this.state.value} onChange={(event)=>searchForBooks(this.handleChange)}/>
 
               </div>
             </div>
