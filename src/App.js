@@ -93,12 +93,14 @@ class SearchBar extends Component {
               <button className="close-search" >Close</button>
               <div className="search-books-input-wrapper">
                 
-                <input type="text" placeholder="Search by title or author" value={searchBooks} onChange={(event)=>this.searchForBooks(event.target.value)}/>
+                <input type="text" placeholder="Search by title or author" value={searchBooks} onChange={(event)=>searchForBooks(event.target.value)}/>
 
               </div>
             </div>
             <div className="search-books-results">
-              <ol className="books-grid"> </ol>
+              <ol className="books-grid"> 
+              {searchBooks.map(book=>(<Book book={book}/>))}
+              </ol>
             </div>
           </div>
     )
