@@ -47,7 +47,7 @@ class App extends Component {
         <Route path="/search" render={() => (
             <SearchBar
               books={books}
-              
+              searchForBooks={this.searchForBooks}
               />
       
         )}
@@ -85,7 +85,7 @@ class BookList extends Component {
 }
 class SearchBar extends Component {
   render() {
-    const {books,searchBooks}=this.props;
+    const {books,searchForBooks,searchBooks}=this.props;
     
     return (
       <div className="search-books">
