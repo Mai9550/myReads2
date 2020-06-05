@@ -6,6 +6,7 @@ import './App.css';
 import {Route,Link} from 'react-router-dom';
 import Shelves from './shelves.js';
 import {debounce} from 'throttle-debounce';
+import Book from './book'
 
 class App extends Component {
   state = {
@@ -36,17 +37,18 @@ class App extends Component {
   });
 
   render() {
-    const { books} = this.state;
+    const { books,searchBooks} = this.state;
  
     return (
       <div className="app">
         
         
-        <Route exact path="/" component={BookList} />
+        <Route exact path="/" render={()=><BookList books={books}/>} />
         <Route path="/search" render={() => (
             <SearchBar
               books={books}
-              onSearch={this.searchForBooks}/>
+              
+              />
       
         )}
         />
@@ -83,19 +85,20 @@ class BookList extends Component {
 }
 class SearchBar extends Component {
   render() {
-    const books=this.props;
+    const {books,searchBooks}=this.props;
+    
     return (
       <div className="search-books">
             <div className="search-books-bar">
               <button className="close-search" >Close</button>
               <div className="search-books-input-wrapper">
                 
-                <input type="text" placeholder="Search by title or author"/>
+                <input type="text" placeholder="Search by title or author" value={searchBooks} onChange={(event)=>this.searchForBooks(event.target.value)}/>
 
               </div>
             </div>
             <div className="search-books-results">
-              <ol className="books-grid"></ol>
+              <ol className="books-grid"> </ol>
             </div>
           </div>
     )
