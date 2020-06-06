@@ -12,8 +12,18 @@ class App extends Component {
   state = {
     books:[],
     searchBooks:[],
+    
   };
-  
+  moveBook = (book, shelf) => {
+    BooksAPI.update(book, shelf);
+
+    let updatedBooks = [];
+    updatedBooks = this.state.searchBooks.filter(b => b.id !== book.id);
+    if (shelf !== 'none') {
+      book.shelf = shelf;
+      updatedBooks = updatedBooks.concat(book);
+    }
+  }
   componentDidMount = () => {
     BooksAPI.getAll().then(books => {
       this.setState({ books: books });
@@ -38,17 +48,18 @@ class App extends Component {
 
   render() {
     const { books,searchBooks} = this.state;
- 
+ const {move,moveBook}=this.props;
     return (
       <div className="app">
         
         
-        <Route exact path="/" render={()=><BookList books={books}/>} />
+        <Route exact path="/" render={()=><BookList books={books} move={this.moveBook}/>} />
         <Route path="/search" render={() => (
             <SearchBar
               books={books}
               searchForBooks={this.searchForBooks}
               searchBooks={searchBooks}
+              move={this.moveBook}
               />
       
         )}
@@ -57,13 +68,15 @@ class App extends Component {
     )
   }
 }
+  
+
 
 class BookList extends Component {
   
   render() {
     
       
-    const {books}=this.props;
+    const {books,move,moveBook}=this.props;
     return (
       <div className="list-books">
         
@@ -71,7 +84,7 @@ class BookList extends Component {
 <div className="list-books">
           <div className="list-books-title">
             <h1>MyReads</h1>
-            <Shelves books={books} />
+            <Shelves books={books} move={moveBook}/>
           </div>
           
         </div>
@@ -89,25 +102,28 @@ class SearchBar extends Component {
     value: '',
   };
   handleChange = event => {
-    const val = event.target.value;
+   const val = event.target.value;
     this.setState({ value: val })
+    this.props.searchForBooks(val)
+
+
   };
   render() {
-    const {books,searchForBooks,searchBooks}=this.props;
+    const {books,searchForBooks,searchBooks,move}=this.props;
     
     return (
       <div className="search-books">
             <div className="search-books-bar">
-              <button className="close-search" >Close</button>
+            <Link to="/"><button className="close-search" >Close</button></Link>
               <div className="search-books-input-wrapper">
                 
-                <input type="text" placeholder="Search by title or author" value={this.state.value} onChange={(event)=>searchForBooks(this.handleChange)}/>
+                <input type="text" placeholder="Search by title or author" value={this.state.value} onChange={this.handleChange}/>
 
               </div>
             </div>
             <div className="search-books-results">
               <ol className="books-grid"> 
-              {searchBooks.map(book=>(<Book book={book}/>))}
+              {searchBooks.map(book=>(<Book book={book} move={this.props.moveBook}/>))}
               </ol>
             </div>
           </div>

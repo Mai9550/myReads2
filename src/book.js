@@ -2,7 +2,7 @@ import React from 'react';
 import NavigationButton from './NavigationButton.js';
 class Book extends React.Component{
     render(){
-   const {book,shelf}  = this.props;
+   const {book,shelf,move,moveBook}  = this.props;
    
   return (
     <li>
@@ -18,7 +18,7 @@ class Book extends React.Component{
                 : 'icons/book-placeholder.svg'})`,
             }}
           />
-          <NavigationButton book={book} shelf={shelf} />
+          <NavigationButton book={book} shelf={shelf} move={moveBook}/>
         </div>
         <div className="book-title">{book.title}</div>
         <div className="book-authors">{book.authors ? book.authors.join(', ') : 'Unknown Author'}</div>

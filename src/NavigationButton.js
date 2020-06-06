@@ -1,11 +1,19 @@
 import React,{Component} from 'react';
 
 class NavigationButton extends Component {
+  state = {
+    value: this.props.shelf,
+  };
+  handleChange = event => {
+    this.setState({ value: event.target.value });
+    this.props.moveBook(this.props.book, event.target.value);
+  };
   render() {
+    const {move,moveBook}=this.props;
     
     return (
       <div className="book-shelf-changer">
-        <select value={this.props.shelf}>
+        <select value={this.props.shelf} onChange={this.handleChange} move={this.props.moveBook}>
           <option value="move" disabled>
             Move to...
           </option>

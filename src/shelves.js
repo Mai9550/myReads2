@@ -5,14 +5,14 @@ import Read from './Read.js'
 class Shelves extends Component{
   
 render(){
-  const {books}=this.props;
+  const {books,move,moveBook}=this.props;
     return(  
         <Fragment>   
           <div className="bookshelf">
                  
                     <div className="bookshelf-books">
                      <ol className="books-grid">
-                     <Currentlyreading books={books} />  
+                     <Currentlyreading books={books} move={moveBook}/>  
                       
                     </ol>
                   </div>
