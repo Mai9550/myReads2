@@ -12,7 +12,7 @@ render(){
                  
                     <div className="bookshelf-books">
                      <ol className="books-grid">
-                     <Currentlyreading books={books} move={moveBook}/>  
+                     <Currentlyreading books={books} moveBook={moveBook}/>  
                       
                     </ol>
                   </div>
@@ -21,7 +21,7 @@ render(){
                   
                   <div className="bookshelf-books">
                     <ol className="books-grid">
-                    <WantToRead books={books} />
+                    <WantToRead books={books} moveBook={moveBook}/>
                     </ol>
                   </div>
                 </div>
@@ -29,7 +29,7 @@ render(){
                   
                   <div className="bookshelf-books">
                     <ol className="books-grid">
-                    <Read books={books} />
+                    <Read books={books} moveBook={moveBook}/>
                     </ol>
                   </div>
                 </div>

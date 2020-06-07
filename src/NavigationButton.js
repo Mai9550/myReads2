@@ -13,7 +13,7 @@ class NavigationButton extends Component {
     
     return (
       <div className="book-shelf-changer">
-        <select value={this.props.shelf} onChange={this.handleChange} move={this.props.moveBook}>
+        <select value={this.props.shelf} onChange={this.handleChange} moveBook={this.props.moveBook}>
           <option value="move" disabled>
             Move to...
           </option>

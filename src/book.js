@@ -18,7 +18,7 @@ class Book extends React.Component{
                 : 'icons/book-placeholder.svg'})`,
             }}
           />
-          <NavigationButton book={book} shelf={shelf} move={moveBook}/>
+          <NavigationButton book={book} shelf={shelf} moveBook={moveBook}/>
         </div>
         <div className="book-title">{book.title}</div>
         <div className="book-authors">{book.authors ? book.authors.join(', ') : 'Unknown Author'}</div>

@@ -1,4 +1,4 @@
-
+/**I give attributes to this great online resource:https://james-priest.github.io/reactnd-project-myreads/?fbclid=IwAR2tP3HwqU6V7KpuD_ZVkyQhLwbq9Rw879sSJByivWpYadwmkalJa8zAMCA */
 import React,{Component} from 'react';
 import * as BooksAPI from './BooksAPI';
 import getAll from './BooksAPI.js';
@@ -53,13 +53,13 @@ class App extends Component {
       <div className="app">
         
         
-        <Route exact path="/" render={()=><BookList books={books} move={this.moveBook}/>} />
+        <Route exact path="/" render={()=><BookList books={books} moveBook={this.moveBook}/>} />
         <Route path="/search" render={() => (
             <SearchBar
               books={books}
               searchForBooks={this.searchForBooks}
               searchBooks={searchBooks}
-              move={this.moveBook}
+              moveBook={this.moveBook}
               />
       
         )}
@@ -84,7 +84,7 @@ class BookList extends Component {
 <div className="list-books">
           <div className="list-books-title">
             <h1>MyReads</h1>
-            <Shelves books={books} move={moveBook}/>
+            <Shelves books={books} moveBook={moveBook}/>
           </div>
           
         </div>
@@ -109,7 +109,7 @@ class SearchBar extends Component {
 
   };
   render() {
-    const {books,searchForBooks,searchBooks,move}=this.props;
+    const {books,searchForBooks,searchBooks,moveBook}=this.props;
     
     return (
       <div className="search-books">
@@ -123,7 +123,7 @@ class SearchBar extends Component {
             </div>
             <div className="search-books-results">
               <ol className="books-grid"> 
-              {searchBooks.map(book=>(<Book book={book} move={this.props.moveBook}/>))}
+              {searchBooks.map(book=>(<Book book={book} moveBook={this.props.moveBook}/>))}
               </ol>
             </div>
           </div>
