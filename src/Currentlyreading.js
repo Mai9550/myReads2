@@ -9,11 +9,11 @@ class currentlyReading extends React.Component{
            <Fragment>
  
             <h2 className="bookshelf-title">Currently Reading</h2>
-                        <li>
+                        <ul>
                         {booksOnThisShelf.map(book=>( 
                         <Book  book={book} moveBook={moveBook}/>
                         ))}
-                      </li>
+                      </ul>
                       </Fragment>
         );
         }

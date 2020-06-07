@@ -8,9 +8,9 @@ class WantToRead extends React.Component{
        return(
            <Fragment>
 <h2 className="bookshelf-title">Want to Read</h2>
-                      <li>
+                      <ul>
                       {booksOnThisShelf.map(book=>(<Book book={book} moveBook={moveBook}/>))}
-                      </li>
+                      </ul>
                       </Fragment>
        );
     }

@@ -7,10 +7,10 @@ class Read extends React.Component{
         return(
             <Fragment>
        <h2 className="bookshelf-title">Read</h2>
-<li>
+<ul>
                             
 {booksOnThisShelf.map(book=>(<Book book={book} moveBook={moveBook}/>))}
-                      </li>
+                      </ul>
                       </Fragment>
         );
     }
